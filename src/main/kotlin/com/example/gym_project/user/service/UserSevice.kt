@@ -12,8 +12,19 @@ class UserService {
     @PostMapping("/users")
     @ResponseStatus(HttpStatus.CREATED)
     fun create(@RequestBody user: User): User {
-        controller.create(user)
-        return user
+        return controller.create(user)
+    }
+
+    @GetMapping("/users")
+    @ResponseStatus(HttpStatus.OK)
+    fun listUser(): List<User> {
+        return controller.listAll()
+    }
+
+    @GetMapping("/users/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    fun listUserById(@PathVariable id: Short): List<User> {
+        return controller.listById(id)
     }
 
 }
