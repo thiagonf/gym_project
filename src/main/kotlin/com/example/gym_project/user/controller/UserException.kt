@@ -14,4 +14,9 @@ class UserException {
     fun illegalArgumentException(exception: IllegalArgumentException): ResponseEntity<ErrorResponse>  {
         return errorResponse.generateErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, exception.message.toString(), exception)
     }
+
+    @ExceptionHandler(NoSuchElementException::class)
+    fun noSuchElementException(exception: NoSuchElementException): ResponseEntity<ErrorResponse>  {
+        return errorResponse.generateErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, exception.message.toString(), exception)
+    }
 }
